@@ -1,0 +1,54 @@
+/* Landing page css */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background: radial-gradient(circle, #a5a1dd 0%, #7a73d1 50%, #4d55cc 100%);
+  color: white;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.orion-logo {
+  width: 150px;  
+  height: auto;
+  margin-bottom: 20px;  
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: white;
+  margin-top: 0;
+}
+
+p {
+  font-size: 1.2rem;
+  color: white;
+  margin-top: -20px;
+}
+
+.start-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: white;
+  color: #4d55cc;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color .3s ease;
+  font-weight: bold;
+}
+
+.start-button:hover {
+  background-color: #211C84;
+  color: white;
+}

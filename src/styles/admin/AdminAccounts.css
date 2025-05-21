@@ -1,0 +1,325 @@
+/* AdminAccounts.css - Enhanced and more consistent styling */
+
+.admin-accounts-container {
+  max-width: 1525px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #333;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 12px;
+}
+
+/* Search Container */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 15px;
+  transition: border 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4d58e9;
+  box-shadow: 0 0 0 2px rgba(77, 88, 233, 0.2);
+}
+
+.search-btn {
+  margin-left: 8px;
+  background-color: #4d58e9;
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-btn:hover {
+  background-color: #3a44d5;
+}
+
+/* Table Styling */
+.table-container {
+  overflow-x: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e0e0e0;
+  background-color: white;
+}
+
+.users-table th,
+.users-table td {
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+.users-table th {
+  background-color: #f4f4f4;
+  font-weight: 600;
+  color: #333;
+  position: sticky;
+  top: 0;
+}
+
+.users-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.users-table tr:hover {
+  background-color: #f0f7ff;
+}
+
+/* Action Buttons */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn, .info-btn, .reload-btn, .delete-btn {
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, transform 0.1s;
+  border: none;
+}
+
+.edit-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #43a047;
+}
+
+.info-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.info-btn:hover {
+  background-color: #0069d9;
+}
+
+.reload-btn {
+  background-color: #4d58e9;
+  color: white;
+}
+
+.reload-btn:hover {
+  background-color: #3a44d5;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #e53935;
+}
+
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-overlay.show .modal {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Modal Input Fields */
+.modal input,
+.modal select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.modal input:focus,
+.modal select:focus {
+  border-color: #4d58e9;
+  outline: none;
+  box-shadow: 0 0 5px rgba(77, 88, 233, 0.3);
+}
+
+.modal label {
+  align-self: flex-start;
+  margin-top: 10px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Modal Buttons */
+.modal button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.modal button:hover {
+  transform: translateY(-2px);
+}
+
+.modal button:first-of-type {
+  background-color: #4caf50;
+  color: white;
+}
+
+.modal button:first-of-type:hover {
+  background-color: #43a047;
+}
+
+.modal button:last-of-type {
+  background-color: #f44336;
+  color: white;
+  margin-top: 8px;
+}
+
+.modal button:last-of-type:hover {
+  background-color: #e53935;
+}
+
+.modal button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* User Info Display in Modal */
+.modal p {
+  width: 100%;
+  text-align: left;
+  margin: 8px 0;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.modal p:last-of-type {
+  border-bottom: none;
+  margin-bottom: 15px;
+}
+
+.modal p strong {
+  color: #555;
+  display: inline-block;
+  width: 180px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .admin-accounts-container {
+    padding: 16px;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .modal {
+    padding: 1.5rem;
+  }
+  
+  .users-table th,
+  .users-table td {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .actions {
+    flex-wrap: wrap;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-overlay.show {
+  animation: fadeIn 0.2s ease-in-out;
+}

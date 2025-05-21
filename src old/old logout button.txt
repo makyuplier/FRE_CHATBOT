@@ -1,0 +1,17 @@
+        {/* <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button> */}
+
+        /* .logout-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #ff3b3b;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #cc0000;
+} */

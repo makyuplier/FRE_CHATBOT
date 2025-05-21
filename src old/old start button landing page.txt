@@ -1,0 +1,28 @@
+        <motion.button
+          className="start-button"
+          onClick={handleStart}
+          initial={{ opacity: 0, y: 20 }}
+          animate={startFade ? { opacity: 0, y: -20 } : { opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1 }}
+        >
+          Get Started
+        </motion.button>
+
+
+        .start-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: white;
+  color: #4d55cc;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color .3s ease;
+  font-weight: bold;
+}
+
+.start-button:hover {
+  background-color: #211C84;
+  color: white;
+}

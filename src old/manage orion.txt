@@ -1,0 +1,15 @@
+    // If content or questions file already exists, ask the user for confirmation
+    // if (contentFile || questionsFile) {
+    //   const { isConfirmed } = await Swal.fire({
+    //     title: "Files Already Uploaded",
+    //     text: "Are you sure you want to upload new files? This will be added as a new file instead of overwriting the current one.",
+    //     icon: "warning",
+    //     showCancelButton: true,
+    //     confirmButtonText: "Yes, Upload",
+    //     cancelButtonText: "Cancel",
+    //   });
+
+    //   if (!isConfirmed) {
+    //     return;  // User canceled, do nothing
+    //   }
+    // }

@@ -1,0 +1,430 @@
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #0a0a2a, #1a1a40, #0a0a2a);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Space background elements */
+.space-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  animation: twinkle 5s infinite ease-in-out;
+}
+
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.nebula-1 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.8), rgba(138, 43, 226, 0.1));
+  top: 20%;
+  left: 10%;
+  animation: float 15s infinite alternate ease-in-out;
+}
+
+.nebula-2 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(65, 105, 225, 0.8), rgba(65, 105, 225, 0.1));
+  bottom: 15%;
+  right: 15%;
+  animation: float 20s infinite alternate-reverse ease-in-out;
+}
+
+.nebula-3 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(220, 20, 60, 0.6), rgba(220, 20, 60, 0.1));
+  top: 60%;
+  left: 60%;
+  animation: float 18s infinite alternate ease-in-out;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(30px, 30px);
+  }
+}
+
+.auth-container h2 {
+  font-size: 2rem;
+  color: white;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* login and signup container */
+.auth-card {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 30px;
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo container */
+.logo-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.orion-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.auth-container input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  color: #4d55cc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.auth-container input:hover,
+.auth-container input:focus {
+  border-color: #4d55cc;
+}
+
+.auth-container button {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  font-size: 1.2rem;
+  background-color: white;
+  color: #4d55cc;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.auth-container button.button-loading {
+  visibility: visible; /* Changed from hidden to visible */
+  color: transparent; /* Hide text but keep button visible */
+}
+
+.auth-container input::placeholder {
+  color: #4d55cc;
+}
+
+.auth-container button:hover:not(:disabled) {
+  background-color: #211c84;
+  color: white;
+}
+
+.auth-container button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.auth-container p {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #4d55cc;
+  width: 100%;
+  text-align: center;
+}
+
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px; /* Space for the icon */
+  box-sizing: border-box;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #4d55cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.toggle-text {
+  color: #4d55cc;
+  cursor: pointer;
+}
+
+.toggle-text:hover {
+  text-decoration: underline;
+}
+
+.divider {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  margin: 20px 0;
+  color: white;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background-color: white;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.google-signin {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 1.2rem;
+  background-color: #db4437; /* Google Red */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.google-signin:hover:not(:disabled) {
+  background-color: #c1351d;
+}
+
+.google-signin:disabled {
+  background-color: #e57373;
+  cursor: not-allowed;
+}
+
+/* Google icon */
+.google-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="%23EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="%23FBBC05" d="M24 38.5c-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48c6.32 0 11.75-2.38 15.68-6.94l-7.41-5.77c-2.35 1.58-5.36 2.71-8.27 2.71z"/><path fill="%234285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="%2334A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>');
+  background-size: contain;
+}
+
+/* Error message styling */
+.error-message {
+  color: #ff3333;
+  background-color: rgba(255, 51, 51, 0.1);
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+/* ResetPassword.css */
+.reset-password-message {
+  color: white;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.reset-password-timer {
+  font-size: 0.9rem;
+  color: #e0e0e0;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.reset-password-resend {
+  color: #4d55cc;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.reset-password-resend:hover {
+  text-decoration: underline;
+}
+
+/* Cosmic Loader - Space-themed loader */
+.cosmic-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+}
+
+.cosmic-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #4d55cc;
+  border-radius: 50%;
+  animation: cosmic-pulse 1.5s infinite ease-in-out;
+}
+
+.cosmic-dot:nth-child(1) {
+  animation-delay: 0s;
+  background-color: #3b82f6;
+}
+
+.cosmic-dot:nth-child(2) {
+  animation-delay: 0.3s;
+  background-color: #8b5cf6;
+}
+
+.cosmic-dot:nth-child(3) {
+  animation-delay: 0.6s;
+  background-color: #ec4899;
+}
+
+.google-loader .cosmic-dot {
+  background-color: white;
+}
+
+@keyframes cosmic-pulse {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .auth-card {
+    width: 90%;
+    max-width: 360px;
+    padding: 20px;
+  }
+
+  .auth-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .nebula-1 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .nebula-2 {
+    width: 180px;
+    height: 180px;
+  }
+
+  .nebula-3 {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    width: 85%;
+    padding: 15px;
+  }
+
+  .auth-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .orion-logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .auth-container button,
+  .google-signin {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .nebula {
+    filter: blur(40px);
+  }
+}

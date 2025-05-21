@@ -1,0 +1,44 @@
+/* Admin Page css */
+.admin-container {
+    display: flex;
+    height: 260vh;
+    transition: margin-left 0.3s ease-in-out;
+  }
+  
+  /* Main Content */
+  .admin-main {
+    flex-grow: 1;
+    padding: 50px;
+  }
+  .admin-layout {
+    display: flex;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .admin-sidebar {
+    width: 250px;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .admin-sidebar.closed {
+    width: 0;
+  }
+  
+  .admin-content {
+    flex-grow: 1;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .admin-content.expanded {
+    width: calc(100% - 250px);
+  }
+  
+  .admin-content.full-width {
+    width: 100%;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: rgb(0, 0, 0);
+    margin-top: 0;
+  }

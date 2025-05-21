@@ -1,0 +1,808 @@
+/* ChatBot.css */
+
+/* Container */
+.chatbot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  position: relative; /* Added for absolute positioning of logout button */
+  padding-right: 50px; /* Space for the logout button */
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  z-index: 5;
+}
+
+.chatbot-header h2 {
+  background: linear-gradient(to right, #e0f7fa, #ffffff, #b3e5fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
+}
+
+/* Space-themed Loading Screen */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(to bottom, #0a0a2a, #1a1a40, #0a0a2a);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  overflow: hidden;
+}
+
+.loading-screen h2 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  animation: pulse 2s infinite ease-in-out;
+  position: relative;
+  z-index: 10;
+  letter-spacing: 2px;
+}
+
+.loading-screen h2::after {
+  content: "...";
+  animation: ellipsis 1.5s infinite;
+  opacity: 1;
+}
+
+@keyframes ellipsis {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.loading-screen .space-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.loading-screen .star {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  animation: twinkle 5s infinite ease-in-out;
+}
+
+.loading-screen .nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.loading-screen .nebula-1 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.8), rgba(138, 43, 226, 0.1));
+  top: 20%;
+  left: 10%;
+  animation: float 15s infinite alternate ease-in-out;
+}
+
+.loading-screen .nebula-2 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(65, 105, 225, 0.8), rgba(65, 105, 225, 0.1));
+  bottom: 15%;
+  right: 15%;
+  animation: float 20s infinite alternate-reverse ease-in-out;
+}
+
+.loading-screen .nebula-3 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(220, 20, 60, 0.6), rgba(220, 20, 60, 0.1));
+  top: 60%;
+  left: 60%;
+  animation: float 18s infinite alternate ease-in-out;
+}
+
+/* Orbital Loader */
+.orbital-loader {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 2rem;
+  z-index: 10;
+}
+
+.orbital-loader .center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.7);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.orbital-loader .orbit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.orbital-loader .orbit:nth-child(1) {
+  animation: rotate 4s linear infinite;
+}
+
+.orbital-loader .orbit:nth-child(2) {
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+  animation: rotate 3s linear infinite reverse;
+}
+
+.orbital-loader .orbit:nth-child(3) {
+  width: 60%;
+  height: 60%;
+  top: 20%;
+  left: 20%;
+  animation: rotate 2s linear infinite;
+}
+
+.orbital-loader .satellite {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #3b82f6;
+  border-radius: 50%;
+  box-shadow: 0 0 15px 3px rgba(59, 130, 246, 0.7);
+}
+
+.orbital-loader .orbit:nth-child(1) .satellite {
+  top: -7.5px;
+  left: calc(50% - 7.5px);
+}
+
+.orbital-loader .orbit:nth-child(2) .satellite {
+  top: calc(50% - 7.5px);
+  right: -7.5px;
+  background: #8b5cf6;
+  box-shadow: 0 0 15px 3px rgba(139, 92, 246, 0.7);
+}
+
+.orbital-loader .orbit:nth-child(3) .satellite {
+  bottom: -7.5px;
+  left: calc(50% - 7.5px);
+  background: #ec4899;
+  box-shadow: 0 0 15px 3px rgba(236, 72, 153, 0.7);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(30px, 30px);
+  }
+}
+
+/* Space-themed Chatbot Container */
+.chatbot-container {
+  width: min(calc(100% - 320px), 1200px);
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  background: linear-gradient(to bottom, rgba(13, 14, 33, 0.95), rgba(26, 27, 64, 0.95));
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 15px rgba(124, 58, 237, 0.2);
+  transition: width 0.4s ease-in-out, margin-left 0.4s ease-in-out;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 100;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Space background for chatbot container */
+.chatbot-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(1px 1px at 25% 15%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 40%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 75% 75%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(2px 2px at 20% 60%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(2.5px 2.5px at 40% 25%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 80% 35%, rgba(255, 255, 255, 0.6) 0%, transparent 100%);
+  background-size: 550px 550px;
+  opacity: 0.15;
+  z-index: -1;
+}
+
+/* Nebula effects for chatbot container */
+.chatbot-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 80%, rgba(124, 58, 237, 0.15), transparent 25%),
+    radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.15), transparent 25%),
+    radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1), transparent 50%);
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* When Side Panel is Open */
+.chatbot-container.expanded {
+  margin-left: 320px;
+  width: min(calc(100% - 320px), 1000px);
+}
+
+/* When Side Panel is Closed */
+.chatbot-container.collapsed {
+  margin-left: 80px;
+  width: min(calc(100% - 80px), 1200px);
+}
+
+/* Messages Container - Space Themed */
+.messages-container {
+  height: 500px;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: rgba(15, 23, 42, 0.6);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: width 0.4s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 10px rgba(124, 58, 237, 0.1);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 58, 237, 0.5) rgba(15, 23, 42, 0.2);
+}
+
+.messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.2);
+  border-radius: 10px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background-color: rgba(124, 58, 237, 0.5);
+  border-radius: 10px;
+}
+
+/* Individual messages - Space Themed */
+.message {
+  padding: 0.8rem 1.2rem;
+  margin: 0.5rem 0;
+  border-radius: 12px;
+  max-width: 75%;
+  word-wrap: break-word;
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+
+.message.user {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: #ffffff;
+  align-self: flex-end;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 10px rgba(124, 58, 237, 0.2);
+}
+
+.message.user::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.1), transparent);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.message.bot {
+  background: rgba(30, 41, 59, 0.8);
+  color: #e2e8f0;
+  align-self: flex-start;
+  margin-right: auto;
+  border-bottom-left-radius: 4px;
+  border-left: 3px solid #8b5cf6;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 10px rgba(139, 92, 246, 0.1);
+}
+
+/* Suggestion Buttons - Space Themed */
+.suggestions-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.suggestion-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 10px rgba(124, 58, 237, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.suggestion-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.suggestion-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 0 15px rgba(124, 58, 237, 0.3);
+}
+
+.suggestion-button:hover::before {
+  left: 100%;
+}
+
+.suggestion-button:active {
+  transform: translateY(0);
+}
+
+/* Input and button - Space Themed */
+.input-container {
+  display: flex;
+  gap: 0.8rem;
+  width: 100%;
+  align-items: center;
+  position: relative;
+}
+
+.input-field {
+  flex: 1;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: rgba(15, 23, 42, 0.6);
+  color: #e2e8f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.input-field::placeholder {
+  color: rgba(226, 232, 240, 0.5);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.send-button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 10px rgba(124, 58, 237, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.send-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.send-button:disabled {
+  background: linear-gradient(135deg, #4b5563, #6b7280);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.send-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 0 15px rgba(124, 58, 237, 0.3);
+}
+
+.send-button:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.send-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 10px rgba(124, 58, 237, 0.2);
+}
+
+/* Admin Button - Preserved as requested */
+.launch-button {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.3em 0.8em 0.9em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  border: none;
+  letter-spacing: 0.05em;
+  border-radius: 16px;
+  margin-right: 60px; /* Add space to the right for the logout button */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.launch-button svg {
+  margin-right: 3px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.launch-button span {
+  transition: transform 0.3s ease;
+}
+
+.launch-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.launch-button:hover svg {
+  transform: translateY(-2px);
+  filter: brightness(1.3);
+}
+
+.launch-button:hover span {
+  transform: translateX(4px);
+}
+
+.launch-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* logout button - Preserved as requested */
+.logout-button-alt {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 44px;
+  height: 44px;
+  background: #dc2626;
+  border-radius: 9999px;
+  position: absolute; /* Changed from relative to absolute */
+  right: 0; /* Position at the right edge */
+  top: 0; /* Position at the top */
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  padding: 0;
+  z-index: 10; /* Ensure it's above other elements */
+}
+
+.logout-button-alt:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.logout-button-alt:hover {
+  width: 128px;
+  border-radius: 12px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.logout-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.logout-button-alt:hover .logout-icon {
+  justify-content: flex-start;
+  padding-left: 12px;
+}
+
+.logout-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.logout-label {
+  position: absolute;
+  right: 20px;
+  transform: translateX(100%);
+  opacity: 0;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.logout-button-alt:hover .logout-label {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  position: absolute; /* Position absolutely */
+  right: 0; /* Align to the right */
+  top: 0; /* Align to the top */
+}
+
+/* Scoped Dropdown Style - Space Themed */
+.chatbot-container .knowledge-selector {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #e2e8f0;
+}
+
+.chatbot-container .knowledge-selector label {
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.chatbot-container .knowledge-selector select {
+  padding: 0.6rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background-color: rgba(15, 23, 42, 0.6);
+  color: #e2e8f0;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chatbot-container .knowledge-selector select:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+}
+
+.chatbot-container .knowledge-selector select:hover {
+  border-color: #8b5cf6;
+}
+
+.chatbot-container .knowledge-selector option {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .chatbot-container {
+    width: 90%;
+    margin: 1rem auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .chatbot-container.expanded {
+    margin-left: 320px;
+    width: calc(100% - 340px);
+  }
+}
+
+@media (max-width: 768px) {
+  .chatbot-container {
+    width: 95%;
+    margin: 0.5rem auto;
+    padding: 0.75rem;
+  }
+
+  .chatbot-container.expanded {
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+  }
+
+  .chatbot-container.collapsed {
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+  }
+
+  .chatbot-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding-top: 50px; /* Add space for the header buttons */
+  }
+
+  .chatbot-header h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-buttons {
+    width: auto; /* Changed from 100% to auto */
+    justify-content: flex-end; /* Changed from space-between to flex-end */
+  }
+
+  .launch-button {
+    margin-right: 50px; /* Reduced space on mobile */
+  }
+
+  .messages-container {
+    height: 400px;
+  }
+
+  .knowledge-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .knowledge-selector select {
+    width: 100%;
+  }
+
+  .suggestions-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .suggestion-button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .input-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .send-button {
+    width: 100%;
+  }
+
+  .loading-screen h2 {
+    font-size: 1.8rem;
+  }
+
+  .orbital-loader {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chatbot-container {
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+    padding: 0.5rem;
+  }
+
+  .messages-container {
+    height: 350px;
+    padding: 0.5rem;
+  }
+
+  .message {
+    max-width: 85%;
+    padding: 0.6rem 1rem;
+  }
+
+  .launch-button {
+    font-size: 14px;
+    padding: 0.6em 1em;
+    margin-right: 50px; /* Ensure space for logout button */
+  }
+
+  .loading-screen h2 {
+    font-size: 1.5rem;
+  }
+
+  .orbital-loader {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Center the container on large screens */
+@media (min-width: 1600px) {
+  .chatbot-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}

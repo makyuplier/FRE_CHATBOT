@@ -1,0 +1,251 @@
+/* Side Panel - Smooth Slide */
+.sidepanel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 300px;
+  background-color: #1e1e2f;
+  color: white;
+  transition: transform 0.4s ease-in-out; /* Smooth animation */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000; /* Ensure it's above the chatbot container */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
+}
+
+.sidepanel.closed {
+  transform: translateX(-100%);
+}
+
+.sidepanel.open {
+  transform: translateX(0);
+}
+
+/* Toggle Button - Smooth Slide */
+.toggle-button {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: white;
+  z-index: 1001; /* Higher than sidepanel to ensure it's always clickable */
+  transition: transform 0.4s ease-in-out; /* Smooth slide */
+}
+
+/* When panel is closed, slide burger to the left slightly */
+.toggle-button.hidden {
+  transform: translateX(-40px);
+  opacity: 0;
+}
+
+/* Burger Menu */
+.burger {
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.burger span {
+  display: block;
+  height: 4px;
+  width: 25px;
+  background: rgb(82, 48, 233);
+  transition: 0.3s;
+}
+
+/* Close Button (X) - Positioned Right */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: fadeInScale 0.4s ease-in-out forwards;
+  z-index: 1002; /* Higher than sidepanel */
+}
+
+/* Fade & Scale Animation */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Sidebar content structure */
+.sidepanel-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Fixed header section */
+.sidepanel-header {
+  padding: 1rem;
+  flex-shrink: 0;
+}
+
+/* Scrollable chat history section */
+.chat-history-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+/* Scrollbar styling for Webkit browsers */
+.chat-history-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-history-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-history-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.chat-history-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* New Chat Button */
+.new-chat-button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  background: white;
+  color: #211c84;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.new-chat-button:hover {
+  background: #5e96ff;
+  color: white;
+}
+
+.sidepanel h3,
+.sidepanel h4,
+.sidepanel h5 {
+  margin-bottom: 0.5rem;
+}
+
+.sidepanel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.sidepanel ul li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #555;
+}
+
+.sidepanel ul li:hover {
+  background: #444;
+  cursor: pointer;
+}
+
+.chat-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  position: relative;
+}
+
+.chat-title-container {
+  flex-grow: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.chat-title {
+  display: inline-block;
+  will-change: transform;
+  white-space: nowrap;
+  transition: transform 0.3s ease-in-out;
+}
+
+.chat-title-container:hover .chat-title {
+  animation: scroll-left var(--scroll-duration, 8s) linear;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  80% {
+    transform: translateX(var(--scroll-distance, -100%));
+  }
+  100% {
+    transform: translateX(0); /* Reset */
+  }
+}
+
+.dots-menu button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.menu-dropdown {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 4px;
+  z-index: 1003; /* Higher than sidepanel */
+}
+
+.delete-icon {
+  color: #e02e2a;
+}
+
+/* Mobile responsiveness improvements */
+@media (max-width: 768px) {
+  .sidepanel {
+    width: 260px; /* Slightly smaller on mobile */
+  }
+
+  .toggle-button {
+    top: 10px;
+    left: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidepanel {
+    width: 240px; /* Even smaller on very small screens */
+  }
+}

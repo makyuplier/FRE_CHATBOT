@@ -1,0 +1,380 @@
+/* Landing page css */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background: linear-gradient(to bottom, #0a0a2a, #1a1a40, #0a0a2a);
+}
+
+/* Space background elements */
+.space-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  animation: twinkle 5s infinite ease-in-out;
+}
+
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.nebula-1 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.8), rgba(138, 43, 226, 0.1));
+  top: 20%;
+  left: 10%;
+  animation: float 15s infinite alternate ease-in-out;
+}
+
+.nebula-2 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(65, 105, 225, 0.8), rgba(65, 105, 225, 0.1));
+  bottom: 15%;
+  right: 15%;
+  animation: float 20s infinite alternate-reverse ease-in-out;
+}
+
+.nebula-3 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(220, 20, 60, 0.6), rgba(220, 20, 60, 0.1));
+  top: 60%;
+  left: 60%;
+  animation: float 18s infinite alternate ease-in-out;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(30px, 30px);
+  }
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.orion-logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.landing-title {
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.manage-orion-p-isolated {
+  font-size: 1.2rem;
+  color: white;
+  margin-top: -20px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* === Scoped Animated Start Button === */
+.custom-start-button-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.custom-start-button-wrapper .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13rem;
+  overflow: hidden;
+  height: 3rem;
+  background-size: 300% 300%;
+  cursor: pointer;
+  backdrop-filter: blur(1rem);
+  border-radius: 5rem;
+  transition: 0.5s;
+  animation: gradient_301 5s ease infinite;
+  border: double 4px transparent;
+  background-image: linear-gradient(#212121, #212121),
+    linear-gradient(137.48deg, #ffdb3b 10%, #fe53bb 45%, #8f51ea 67%, #0044ff 87%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.custom-start-button-wrapper #container-stars {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: 0.5s;
+  backdrop-filter: blur(1rem);
+  border-radius: 5rem;
+}
+
+.custom-start-button-wrapper strong {
+  z-index: 2;
+  font-family: "Avalors Personal Use", sans-serif;
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: #ffffff;
+  text-shadow: 0 0 4px white;
+}
+
+.custom-start-button-wrapper #glow {
+  position: absolute;
+  display: flex;
+  width: 12rem;
+}
+
+.custom-start-button-wrapper .circle {
+  width: 100%;
+  height: 30px;
+  filter: blur(2rem);
+  animation: pulse_3011 4s infinite;
+  z-index: -1;
+}
+
+.custom-start-button-wrapper .circle:nth-of-type(1) {
+  background: rgba(254, 83, 186, 0.636);
+}
+
+.custom-start-button-wrapper .circle:nth-of-type(2) {
+  background: rgba(142, 81, 234, 0.704);
+}
+
+.custom-start-button-wrapper .btn:hover #container-stars {
+  z-index: 1;
+  background-color: #212121;
+}
+
+.custom-start-button-wrapper .btn:hover {
+  transform: scale(1.1);
+}
+
+.custom-start-button-wrapper .btn:active {
+  border: double 4px #fe53bb;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  animation: none;
+}
+
+.custom-start-button-wrapper .btn:active .circle {
+  background: #fe53bb;
+}
+
+.custom-start-button-wrapper #stars {
+  position: relative;
+  background: transparent;
+  width: 200rem;
+  height: 200rem;
+}
+
+.custom-start-button-wrapper #stars::after {
+  content: "";
+  position: absolute;
+  top: -10rem;
+  left: -100rem;
+  width: 100%;
+  height: 100%;
+  animation: animStarRotate 90s linear infinite;
+  background-image: radial-gradient(#ffffff 1px, transparent 1%);
+  background-size: 50px 50px;
+}
+
+.custom-start-button-wrapper #stars::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 170%;
+  height: 500%;
+  animation: animStar 60s linear infinite;
+  background-image: radial-gradient(#ffffff 1px, transparent 1%);
+  background-size: 50px 50px;
+  opacity: 0.5;
+}
+
+/* Keyframes stay global unless CSS modules are used */
+@keyframes animStar {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-135rem);
+  }
+}
+
+@keyframes animStarRotate {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0);
+  }
+}
+
+@keyframes gradient_301 {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse_3011 {
+  0% {
+    transform: scale(0.75);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.75);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+/* Loader animation */
+.loader {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  width: 13rem;
+  height: 3rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.loader .dot {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #16b0c1;
+  animation: jump 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes jump {
+  25% {
+    background: blue;
+    transform: translateY(1rem) scale(0.7);
+  }
+
+  50% {
+    opacity: 0;
+    transform: translateY(3rem) translateX(-2rem) scale(0.7);
+  }
+
+  100% {
+    background: blue;
+    transform: translateY(-4rem) scale(0.2);
+  }
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .landing-title {
+    font-size: 2.2rem;
+  }
+
+  .orion-logo {
+    width: 120px;
+  }
+
+  .manage-orion-p-isolated {
+    font-size: 1rem;
+  }
+
+  .nebula-1 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .nebula-2 {
+    width: 180px;
+    height: 180px;
+  }
+
+  .nebula-3 {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-title {
+    font-size: 1.8rem;
+  }
+
+  .orion-logo {
+    width: 100px;
+  }
+
+  .custom-start-button-wrapper .btn {
+    width: 11rem;
+    height: 2.8rem;
+  }
+
+  .custom-start-button-wrapper strong {
+    font-size: 10px;
+    letter-spacing: 4px;
+  }
+
+  .nebula {
+    filter: blur(40px);
+  }
+}
