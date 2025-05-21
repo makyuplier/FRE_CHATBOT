@@ -293,9 +293,9 @@
   display: flex;
   gap: 5px;
   justify-content: center;
-  width: 13rem;
-  height: 3rem;
   align-items: center;
+  width: 100%;
+  height: 100%;
   position: relative;
   z-index: 1;
 }
@@ -323,6 +323,26 @@
     background: blue;
     transform: translateY(-4rem) scale(0.2);
   }
+}
+
+.loader .dot:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.loader .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loader .dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.loader .dot:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.loader .dot:nth-child(5) {
+  animation-delay: 0.5s;
 }
 
 /* Media queries for responsiveness */
